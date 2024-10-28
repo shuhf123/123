@@ -1,0 +1,125 @@
+# 3.1.2 查询当前根服务资源
+
+## 命令功能
+
+> 查询服务器当前根服务资源。
+
+## 命令格式
+
+> 操作类型: **GET**  
+> URL: https://{device_ip}/redfish/v1  
+> 请求头: 无  
+> 请求消息体: 无
+
+## 参数说明
+
+> **表 3-4 查询当前根服务资源参数说明**  
+> | 参数      | 参数说明         | 取值         |  
+> |-----------|------------------|--------------|  
+> | device_ip | 登录设备的IP地址 | IPv4或IPv6地址 |
+
+## 使用指南
+
+> 无
+
+## 使用实例
+
+> 请求样例:  
+> GET https://{device_ip}/redfish/v1  
+> 请求头: 无  
+> 请求消息体: 无  
+
+> 响应样例:  
+> ```json
+> {
+>     "@odata.context": "/redfish/v1/$metadata#serviceRoot",
+>     "@odata.id": "/redfish/v1/",
+>     "@odata.type": "#ServiceRoot.v1_0_2.ServiceRoot",
+>     "Id": "RootService",
+>     "Name": "Root Service",
+>     "RedfishVersion": "1.0.2",
+>     "UUID": "2BFF4014-1DD2-11B2-818C-0018E1C5D866",
+>     "Systems": {"@odata.id": "/redfish/v1/systems"},
+>     "Chassis": {"@odata.id": "/redfish/v1/Chassis"},
+>     "Managers": {"@odata.id": "/redfish/v1/Managers"},
+>     "Tasks": {"@odata.id": "/redfish/v1/Taskservice"},
+>     "SessionService": {"@odata.id": "/redfish/v1/sessionservice"},
+>     "AccountService": {"@odata.id": "/redfish/v1/Accountservice"},
+>     "EventService": {"@odata.id": "/redfish/v1/Eventservice"},
+>     "Links": {
+>         "Sessions": {"@odata.id": "/redfish/v1/sessionservice/sessions"}
+>     },
+>     "UpdateService": {"@odata.id": "/redfish/v1/updateservice"},
+>     "Registries": {"@odata.id": "/redfish/v1/Registries"},
+>     "JsonSchemas": {"@odata.id": "/redfish/v1/JsonSchemas"},
+>     "Fabrics": {"@odata.id": "/redfish/v1/Fabrics"},
+>     "Oem": {
+>         "Huawei": {
+>             "SmsUpdateService": [{"@odata.id": "/redfish/v1/sms/1/updateservice"}],
+>             "SystemOverview": {"@odata.id": "/redfish/v1/systemOverview"},
+>             "SecurityBanner": "WARNING! This system is PRIVATE and PROPRIETARY...",
+>             "ProductName": "RH1288 V3",
+>             "ProductSerialNumber": "2M220100SL",
+>             "HostName": "huawei",
+>             "LanguageSet": "en,zh,fr,ja",
+>             "Copyright": "Huawei Technologies Co., Ltd. 2004-2018...",
+>             "DownloadKVMLink": "http://support.huawei.com/onlinetoolsweb/itexpress/kvmclient/",
+>             "DocSupportFlag": true,
+>             "DomainName": ["", "", "", "", "", ""],
+>             "ProductPicture": "img_01",
+>             "AccountLockoutDuration": 300,
+>             "KerberosEnabled": false,
+>             "ChassisHeightU": null,
+>             "FQDN": "huawei.iBMC.com",
+>             "SmsName": "iBMA"
+>         }
+>     }
+> }
+> ```
+
+## 输出说明
+
+> **表 3-5 根服务资源信息**  
+> | 字段                   | 类型       | 说明                         |  
+> |------------------------|------------|------------------------------|  
+> | @odata.context         | 字符串     | 根服务资源模型的OData描述信息 |  
+> | @odata.id              | 字符串     | 根服务资源节点的访问路径      |  
+> | @odata.type            | 字符串     | 根服务资源类型               |  
+> | Id                     | 字符串     | 根服务资源的ID               |  
+> | Name                   | 字符串     | 根服务资源的名称             |  
+> | RedfishVersion         | 字符串     | Redfish的详细版本信息         |  
+> | UUID                   | 字符串     | 设备的全局唯一标识符         |  
+> | Systems                | 对象       | 系统资源                     |  
+> | Chassis                | 对象       | 机箱资源                     |  
+> | Managers               | 对象       | 管理资源                     |  
+> | Tasks                  | 对象       | 任务服务资源                 |  
+> | SessionService         | 对象       | 会话服务资源                 |  
+> | AccountService         | 对象       | 账户服务资源                 |  
+> | EventService           | 对象       | 事件服务资源                 |  
+> | Links.Sessions         | 对象       | 会话集合资源                 |  
+> | UpdateService          | 对象       | 升级服务资源                 |  
+> | Registries             | 对象       | 消息归档资源                 |  
+> | JsonSchemas            | 对象       | 数组格式的模板资源           |  
+> | Fabrics                | 对象       | 拓扑编排资源                 |  
+> | Oem.Huawei             | 自定义属性 | 华为定制扩展                 |  
+> | SmsUpdateService       | 对象       | 系统管理软件升级资源         |  
+> | SystemOverview         | 对象       | 系统概览信息资源             |  
+> | SecurityBanner         | 字符串     | 安全公告信息                 |  
+> | ProductName            | 字符串     | 产品名称                     |  
+> | ProductSerialNumber    | 字符串     | 产品序列号                   |  
+> | HostName               | 字符串     | 主机名称                     |  
+> | LanguageSet            | 字符串     | 语言支持信息                 |  
+> | Copyright              | 字符串     | 版权信息                     |  
+> | DownloadKVMLink        | 字符串     | Java远程控制台下载链接        |  
+> | DocSupportFlag         | 布尔       | 产品文档二维码显示使能       |  
+> | DomainName             | 字符串数组 | LDAP域名与Kerberos域名      |  
+> | ProductPicture         | 字符串     | 产品图片名称                 |  
+> | AccountLockoutDuration | 数字       | 用户登录失败后锁定时长（秒） |  
+> | KerberosEnabled        | 布尔       | Kerberos功能使能            |  
+> | ChassisHeightU         | 数字       | 机框节点U位高度              |  
+> | FQDN                   | 字符串     | 全称域名                     |  
+> | SmsName                | 字符串     | 系统管理软件名称             |
+
+## 备注
+
+> 无
